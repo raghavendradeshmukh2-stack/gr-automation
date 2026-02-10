@@ -1,0 +1,26 @@
+name: GR Automation
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # दर 6 तासांनी run होईल
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 firebase-admin
+
+      - name: Run GR Fetch Script
+        run: python gr_fetch.py
+        

@@ -7,9 +7,7 @@ import json
 # Firebase Setup
 firebase_key = json.loads(os.environ["FIREBASE_KEY"])
 cred = credentials.Certificate(firebase_key)
-firebase_admin.initialize_app(cred, {
-    'databaseURL': "https://dynamic-gr-150b5-default-rtdb.asia-southeast1.firebasedatabase.app/"
-})
+firebase_admin.initialize_app(cred, {'databaseURL':"https://dynamic-gr-150b5-default-rtdb.asia-southeast1.firebasedatabase.app/"})
 url = "https://gr.maharashtra.gov.in/1145/Government-Resolutions"
 response = requests.get(url)
 soup = BeautifulSoup(response.text, "html.parser")

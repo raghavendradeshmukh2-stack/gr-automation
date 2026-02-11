@@ -4,7 +4,12 @@ import firebase_admin
 from firebase_admin import credentials, db
 
 # Firebase Setup
-cred = credentials.Certificate("firebase_key.json")
+import os
+import json
+
+firebase_key = json.loads(os.environ["FIREBASE_KEY"])
+
+cred = credentials.Certificate(firebase_key)
 firebase_admin.initialize_app(cred, {
     'databaseURL': https://dynamic-gr-150b5-default-rtdb.asia-southeast1.firebasedatabase.app/
 })
